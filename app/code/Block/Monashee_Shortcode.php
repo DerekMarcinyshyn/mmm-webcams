@@ -34,7 +34,7 @@ class Monashee_Shortcode {
     private function __construct() { }
 
     function display_webcams( $atts, $content = null ) {
-        $html = 'Hello Webcams';
+        $html = '<img src="http://images.drivebc.ca/bchighwaycam/pub/cameras/101.jpg?' . time() . '" alt="" />';
 
         return $html;
     }
