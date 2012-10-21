@@ -56,7 +56,7 @@ require_once( MMM_WC_APP_PATH . '/code/Block/Monashee_Webcam.php' );
 require_once( MMM_WC_APP_PATH . '/code/Block/Monashee_Shortcode.php' );
 
 // Require updater class
-require_once( MMM_WC_LIB_PATH . '/jkudish/updater.php' );
+require_once( 'updater.php' );
 
 // Initialize and setup application
 global  $mmm_wc_app,

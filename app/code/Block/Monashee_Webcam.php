@@ -35,7 +35,7 @@ class Monashee_Webcam {
         global $mmm_wc_shortcode;
 
         // add updater action
-        add_action( 'admin_init', array( &$this, 'github_plugin_updater' ) );
+        add_action( 'init', array( &$this, 'github_plugin_updater' ) );
 
         // add shortcode action
         add_shortcode( 'mmm-webcams', array( &$mmm_wc_shortcode, 'display_webcams' ) );
