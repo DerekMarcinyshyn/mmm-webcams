@@ -10,7 +10,7 @@ Monashee Mountain Multimedia Webcams is a plugin for WordPress that displays web
 
 ## Changelog
 
-~Current Version:1.1~
+~Current Version:1.0~
 
 ### 1.0
 
