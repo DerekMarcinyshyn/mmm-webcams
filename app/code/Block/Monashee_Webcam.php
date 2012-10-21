@@ -1,4 +1,6 @@
 <?php
+
+if ( ! class_exists( 'Monashee_Webcam' ) ) :
 /**
  * Monashee Webcam
  * @package     Block
@@ -46,7 +48,8 @@ class Monashee_Webcam {
      * @link    https://github.com/jkudish/WordPress-GitHub-Plugin-Updater
      */
     function github_plugin_updater() {
-        define('WP_GITHUB_FORCE_UPDATE', true);
+        if (!defined('WP_GITHUB_FORCE_UPDATE'))
+            define('WP_GITHUB_FORCE_UPDATE', true );
 
         if (is_admin()) {
             $config = array(
@@ -67,3 +70,4 @@ class Monashee_Webcam {
         }
     }
 }
+endif; // end if class exists
