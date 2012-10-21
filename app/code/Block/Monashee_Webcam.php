@@ -35,9 +35,14 @@ class Monashee_Webcam {
         // ===========
 
         // add updater action
-        add_action('init', 'github_plugin_updater');
+        add_action('init', array(&$this, 'github_plugin_updater'));
     }
 
+    /**
+     * Github Plugin Updater API
+     * @see     /lib/jkudish/updater.php
+     * @link    https://github.com/jkudish/WordPress-GitHub-Plugin-Updater
+     */
     function github_plugin_updater() {
         define('WP_GITHUB_FORCE_UPDATE', true);
 
@@ -45,10 +50,10 @@ class Monashee_Webcam {
             $config = array(
                 'slug'                  => plugin_basename(__FILE__),
                 'proper_folder_name'    => 'mmm-webcams',
-                'api_url'               => 'https://api.github.com/repos/',
-                'raw_url'               => 'https://raw.github.com/',
-                'github_url'            => 'https://github.com/',
-                'zip_url'               => 'https://github.com/',
+                'api_url'               => 'https://api.github.com/repos/DerekMarcinyshyn/mmm-webcams',
+                'raw_url'               => 'https://raw.github.com/DerekMarcinyshyn/mmm-webcams/master',
+                'github_url'            => 'https://github.com/DerekMarcinyshyn/mmm-webcams',
+                'zip_url'               => 'https://github.com/DerekMarcinyshyn/mmm-webcams/zipball/master',
                 'sslverify'             => true,
                 'requires'              => '3.0',
                 'tested'                => '3.5',
