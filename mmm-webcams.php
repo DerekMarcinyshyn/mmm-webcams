@@ -52,11 +52,19 @@ define( 'MMM_WC_URL', WP_PLUGIN_URL . '/' . MMM_WC_DIRECTORY );
 // Require main class
 require_once( MMM_WC_APP_PATH . '/code/Block/Monashee_Webcam.php' );
 
+// Require shortcode class
+require_once( MMM_WC_APP_PATH . '/code/Block/Monashee_Shortcode.php' );
+
 // Require updater class
 require_once( MMM_WC_LIB_PATH . '/jkudish/updater.php' );
 
 // Initialize and setup application
-global  $mmm_wc_app;
+global  $mmm_wc_app,
+        $mmm_wc_shortcode;
+
+// shortcode class
+$mmm_wc_shortcode = Monashee_Shortcode::get_instance();
 
 // Main class app initialization in Monashee_Weather::__construct()
 $mmm_wc_app = Monashee_Webcam::get_instance();
+

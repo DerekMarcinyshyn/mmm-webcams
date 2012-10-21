@@ -2,7 +2,7 @@
 
 if ( ! class_exists( 'Monashee_Webcam' ) ) :
 /**
- * Monashee Webcam
+ * Monashee Webcams
  * @package     Block
  * @since       October 20, 2012
  * @author      Derek Marcinyshyn <derek@marcinyshyn.com>
@@ -32,14 +32,13 @@ class Monashee_Webcam {
      * Default constructor -- application initialization
      */
     private function __construct() {
-        // ===========
-        // = ACTIONS =
-        // ===========
+        global $mmm_wc_shortcode;
 
         // add updater action
-        add_action('init', array(&$this, 'github_plugin_updater'));
+        add_action( 'admin_init', array( &$this, 'github_plugin_updater' ) );
 
         // add shortcode action
+        add_shortcode( 'mmm-webcams', array( &$mmm_wc_shortcode, 'display_webcams' ) );
     }
 
     /**
@@ -48,10 +47,10 @@ class Monashee_Webcam {
      * @link    https://github.com/jkudish/WordPress-GitHub-Plugin-Updater
      */
     function github_plugin_updater() {
-        if (!defined('WP_GITHUB_FORCE_UPDATE'))
-            define('WP_GITHUB_FORCE_UPDATE', true );
+        if ( !defined( 'WP_GITHUB_FORCE_UPDATE' ) )
+            define( 'WP_GITHUB_FORCE_UPDATE', true );
 
-        if (is_admin()) {
+        if ( is_admin() ) {
             $config = array(
                 'slug'                  => plugin_basename(__FILE__),
                 'proper_folder_name'    => 'mmm-webcams',
