@@ -36,6 +36,8 @@ class Monashee_Webcam {
 
         // add updater action
         add_action('init', array(&$this, 'github_plugin_updater'));
+
+        // add shortcode action
     }
 
     /**

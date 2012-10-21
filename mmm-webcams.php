@@ -1,14 +1,14 @@
 <?php
 /**
  * @package MMM_Webcams
- * @version 0.1
+ * @version 0.2
  */
 /*
 Plugin Name: MMM Webcams
 Plugin URI: http://monasheemountainmultimedia.com/plugins/mmm-webcams/
 Description: Displays webcams on your page.
 Author: Derek Marcinyshyn
-Version: 0.1
+Version: 0.2
 Author URI: http://derek.marcinyshyn.com
 License: GPLv2
 
