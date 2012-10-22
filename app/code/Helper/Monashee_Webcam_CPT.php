@@ -35,6 +35,9 @@ if ( ! class_exists( 'Monashee_Webcam_CPT' ) ) :
 
         }
 
+        /**
+         * Load the cmb_Meta_Box class
+         */
         function initialize_mmm_webcam_metaboxes() {
             if ( !class_exists( ' cmb_Meta_Box' ) ) {
                 require_once( MMM_WC_LIB_PATH . '/metabox/init.php' );
@@ -120,33 +123,33 @@ if ( ! class_exists( 'Monashee_Webcam_CPT' ) ) :
         function register_taxonomy_groups() {
 
             $labels = array(
-                'name' => _x( 'Webcam Groups', 'groups' ),
-                'singular_name' => _x( 'Webcam Group', 'groups' ),
-                'search_items' => _x( 'Search Webcam Groups', 'groups' ),
-                'popular_items' => _x( 'Popular Webcam Groups', 'groups' ),
-                'all_items' => _x( 'All Webcam Groups', 'groups' ),
-                'parent_item' => _x( 'Parent Group', 'groups' ),
-                'parent_item_colon' => _x( 'Parent Group:', 'groups' ),
-                'edit_item' => _x( 'Edit Webcam Group', 'groups' ),
-                'update_item' => _x( 'Update Webcam Group', 'groups' ),
-                'add_new_item' => _x( 'Add New Webcam Group', 'groups' ),
-                'new_item_name' => _x( 'New Webcam Group', 'groups' ),
-                'separate_items_with_commas' => _x( 'Separate groups with commas', 'groups' ),
-                'add_or_remove_items' => _x( 'Add or remove groups', 'groups' ),
-                'choose_from_most_used' => _x( 'Choose from the most used groups', 'groups' ),
-                'menu_name' => _x( 'Webcam Groups', 'groups' ),
+                'name'                          => _x( 'Webcam Groups', 'groups' ),
+                'singular_name'                 => _x( 'Webcam Group', 'groups' ),
+                'search_items'                  => _x( 'Search Webcam Groups', 'groups' ),
+                'popular_items'                 => _x( 'Popular Webcam Groups', 'groups' ),
+                'all_items'                     => _x( 'All Webcam Groups', 'groups' ),
+                'parent_item'                   => _x( 'Parent Group', 'groups' ),
+                'parent_item_colon'             => _x( 'Parent Group:', 'groups' ),
+                'edit_item'                     => _x( 'Edit Webcam Group', 'groups' ),
+                'update_item'                   => _x( 'Update Webcam Group', 'groups' ),
+                'add_new_item'                  => _x( 'Add New Webcam Group', 'groups' ),
+                'new_item_name'                 => _x( 'New Webcam Group', 'groups' ),
+                'separate_items_with_commas'    => _x( 'Separate groups with commas', 'groups' ),
+                'add_or_remove_items'           => _x( 'Add or remove groups', 'groups' ),
+                'choose_from_most_used'         => _x( 'Choose from the most used groups', 'groups' ),
+                'menu_name'                     => _x( 'Webcam Groups', 'groups' ),
             );
 
             $args = array(
-                'labels' => $labels,
-                'public' => true,
+                'labels'            => $labels,
+                'public'            => true,
                 'show_in_nav_menus' => false,
-                'show_ui' => true,
-                'show_tagcloud' => false,
-                'hierarchical' => true,
+                'show_ui'           => true,
+                'show_tagcloud'     => false,
+                'hierarchical'      => true,
 
-                'rewrite' => true,
-                'query_var' => true
+                'rewrite'           => true,
+                'query_var'         => true
             );
 
             register_taxonomy( 'groups', array('webcam'), $args );
