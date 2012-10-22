@@ -49,6 +49,7 @@ define( 'MMM_WC_LIB_PATH', MMM_WC_PATH . '/lib' );
 // URL
 define( 'MMM_WC_URL', WP_PLUGIN_URL . '/' . MMM_WC_DIRECTORY );
 
+
 // Require main class
 require_once( MMM_WC_APP_PATH . '/code/Block/Monashee_Webcam_App.php' );
 
@@ -56,7 +57,7 @@ require_once( MMM_WC_APP_PATH . '/code/Block/Monashee_Webcam_App.php' );
 require_once( MMM_WC_APP_PATH . '/code/Block/Monashee_Webcam_Shortcode.php' );
 
 // Require Custom Metaboxes and Fields
-require_once( MMM_WC_LIB_PATH . '/metabox/init.php' );
+require_once( MMM_WC_LIB_PATH . '/metabox/example-functions.php' );
 
 // Require custom post type class
 require_once( MMM_WC_APP_PATH . '/code/Helper/Monashee_Webcam_CPT.php' );
@@ -64,16 +65,20 @@ require_once( MMM_WC_APP_PATH . '/code/Helper/Monashee_Webcam_CPT.php' );
 // Require updater class
 include_once( MMM_WC_LIB_PATH . '/updater/updater.php' );
 
-// Initialize and setup application
+
+// ====================================
+// = Initialize and setup application =
+// ====================================
+
 global  $mmm_wc_app,
         $mmm_wc_shortcode,
         $mmm_wc_cpt;
 
-// shortcode class
-$mmm_wc_shortcode = Monashee_Webcam_Shortcode::get_instance();
-
 // custom post type class
 $mmm_wc_cpt = Monashee_Webcam_CPT::get_instance();
+
+// shortcode class
+$mmm_wc_shortcode = Monashee_Webcam_Shortcode::get_instance();
 
 // Main class app initialization in Monashee_Weather::__construct()
 $mmm_wc_app = Monashee_Webcam_App::get_instance();

@@ -32,13 +32,23 @@ class Monashee_Webcam_App {
      * Default constructor -- application initialization
      */
     private function __construct() {
-        global $mmm_wc_shortcode;
+        global $mmm_wc_shortcode,
+               $mmm_wc_cpt;
 
-        // add updater action
-        add_action( 'init', array( &$this, 'github_plugin_updater' ) );
+        // add the custom post type
+        add_action( 'init', array( &$mmm_wc_cpt, 'register_cpt_webcam' ) );
+
+        // initialize metaboxes class
+        add_action( 'init', array( &$mmm_wc_cpt, 'initialize_mmm_webcam_metaboxes' ), 9999, 0 );
+
+        // add the custom metabox fields to the custom post type webcam
+        add_filter( 'cmb_meta_boxes', array( &$mmm_wc_cpt, 'mmm_webcam_metaboxes' ), 9 );
 
         // add shortcode action
         add_shortcode( 'mmm-webcams', array( &$mmm_wc_shortcode, 'display_webcams' ) );
+
+        // add updater action
+        add_action( 'init', array( &$this, 'github_plugin_updater' ) );
     }
 
     /**
