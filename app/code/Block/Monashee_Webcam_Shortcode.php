@@ -33,8 +33,46 @@ class Monashee_Webcam_Shortcode {
      */
     private function __construct() { }
 
+    /**
+     * Display the webcams where the shortcode lives
+     * @param $atts
+     * @param null $content
+     * @return string
+     */
     function display_webcams( $atts, $content = null ) {
-        $html = '<img src="http://images.drivebc.ca/bchighwaycam/pub/cameras/101.jpg?' . time() . '" alt="" />';
+        $loop = new WP_Query(
+            array(
+                'post_type'         => 'webcam',
+                'orderby'           => 'title',
+                'order'             => 'ASC',
+                'posts_per_page'    => '-1',
+            )
+        );
+
+        if ( $loop->have_posts() ) {
+
+            $html = '<ul class="mmm-webcams">';
+
+            while ( $loop->have_posts() ) {
+                $loop->the_post();
+
+                $img = get_post_meta( get_the_ID(), '_mmm_webcam_url_text', true );
+
+                $html .= '<img src="' . $img . '" alt="' . the_title( '', '', false ) . '" />';
+
+                $html .= the_title(
+                    '<li>',
+                    '</li>',
+                    false
+                    );
+
+                $html .= get_post_meta( get_the_ID(), '_mmm_webcam_description_text', true );
+            }
+
+            $html .= '</ul>';
+        } else {
+            $html = '<p>Sorry no webcams created.</p>';
+        }
 
         return $html;
     }

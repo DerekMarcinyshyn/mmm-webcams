@@ -48,10 +48,10 @@ class Monashee_Webcam_App {
         add_filter( 'cmb_meta_boxes', array( &$mmm_wc_cpt, 'mmm_webcam_metaboxes' ), 9 );
 
         // add shortcode action
-        add_shortcode( 'mmm-webcams', array( &$mmm_wc_shortcode, 'display_webcams' ) );
+        add_shortcode( 'mmm-webcams', array( &$mmm_wc_shortcode, 'display_webcams' ), 10, 1 );
 
         // add updater action
-        add_action( 'init', array( &$this, 'github_plugin_updater' ) );
+        add_action( 'init', array( &$this, 'github_plugin_updater' ), 10, 0 );
     }
 
     /**
