@@ -68,7 +68,6 @@ class cmb_Meta_Box_Validate {
  */
 define( 'CMB_META_BOX_URL', MMM_WC_URL . '/lib/metabox/' );
 
-echo 'WTF:  '.CMB_META_BOX_URL;
 
 /**
  * Create meta boxes
