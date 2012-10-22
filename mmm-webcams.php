@@ -55,6 +55,9 @@ require_once( MMM_WC_APP_PATH . '/code/Block/Monashee_Webcam_App.php' );
 // Require shortcode class
 require_once( MMM_WC_APP_PATH . '/code/Block/Monashee_Webcam_Shortcode.php' );
 
+// Require Custom Metaboxes and Fields
+require_once( MMM_WC_LIB_PATH . '/metabox/init.php' );
+
 // Require custom post type class
 require_once( MMM_WC_APP_PATH . '/code/Helper/Monashee_Webcam_CPT.php' );
 
