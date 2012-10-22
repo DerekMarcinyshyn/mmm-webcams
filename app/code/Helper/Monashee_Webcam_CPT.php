@@ -48,8 +48,8 @@ if ( ! class_exists( 'Monashee_Webcam_CPT' ) ) :
         function mmm_webcam_metaboxes( $meta_boxes ) {
             $prefix = '_mmm_';
             $meta_boxes[] = array(
-                    'id'            => 'url_metabox',
-                    'title'         => 'Webcam Url',
+                    'id'            => 'webcam_metabox',
+                    'title'         => 'Enter your Webcam Details',
                     'pages'         => array( 'webcam' ), // post type
                     'context'       => 'normal',
                     'priority'      => 'high',
