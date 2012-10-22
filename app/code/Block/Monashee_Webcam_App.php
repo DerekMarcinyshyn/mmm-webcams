@@ -1,6 +1,6 @@
 <?php
 
-if ( ! class_exists( 'Monashee_Webcam' ) ) :
+if ( ! class_exists( 'Monashee_Webcam_App' ) ) :
 /**
  * Monashee Webcams
  * @package     Block
@@ -8,7 +8,7 @@ if ( ! class_exists( 'Monashee_Webcam' ) ) :
  * @author      Derek Marcinyshyn <derek@marcinyshyn.com>
  * @version     1.0
  */
-class Monashee_Webcam {
+class Monashee_Webcam_App {
     /**
      * _instance class variable
      *
