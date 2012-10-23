@@ -50,8 +50,32 @@ class Monashee_Webcam_App {
         // add shortcode action
         add_shortcode( 'mmm-webcams', array( &$mmm_wc_shortcode, 'display_webcams' ), 10, 1 );
 
+        // add css
+        add_action( 'init', array( &$this, 'mmm_webcam_css' ) );
+
         // add updater action
         add_action( 'init', array( &$this, 'github_plugin_updater' ), 10, 0 );
+    }
+
+    /**
+     * Load the CSS
+     */
+    function mmm_webcam_css() {
+        // load mmm-webcams css
+        wp_register_style( 'mmm-webcam-css', MMM_WC_URL . '/assets/css/style.css', true, MMM_WC_VERSION );
+        wp_enqueue_style( 'mmm-webcam-css' );
+
+        // load fancybox css
+        wp_register_style( 'mmm-webcam-fancybox-css', MMM_WC_URL . '/lib/fancybox/jquery.fancybox.css', true, MMM_WC_VERSION );
+        wp_enqueue_style( 'mmm-webcam-fancybox-css' );
+
+        // load fancybox jquery
+        wp_register_script( 'mmm-webcam-fancybox-jscript', MMM_WC_URL . '/lib/fancybox/jquery.fancybox.pack.js', array( 'jquery' ), MMM_WC_VERSION, true );
+        wp_enqueue_script( 'mmm-webcam-fancybox-jscript');
+
+        // load mmm-webcams javascript
+        wp_register_script( 'mmm-webcam-jscript', MMM_WC_URL . '/assets/js/mmm-webcam.js', array( 'jquery' ), MMM_WC_VERSION, true );
+        wp_enqueue_script( 'mmm-webcam-jscript');
     }
 
     /**

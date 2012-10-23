@@ -54,7 +54,7 @@ define( 'MMM_WC_URL', WP_PLUGIN_URL . '/' . MMM_WC_DIRECTORY );
 require_once( MMM_WC_APP_PATH . '/code/Block/Monashee_Webcam_App.php' );
 
 // Require shortcode class
-require_once( MMM_WC_APP_PATH . '/code/Block/Monashee_Webcam_Shortcode.php' );
+require_once( MMM_WC_APP_PATH . '/code/View/Monashee_Webcam_Shortcode.php' );
 
 // Require custom post type class
 require_once( MMM_WC_APP_PATH . '/code/Helper/Monashee_Webcam_CPT.php' );

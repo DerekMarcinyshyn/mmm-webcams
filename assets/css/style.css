@@ -1,0 +1,10 @@
+/*
+MMM Webcams
+@author     Derek Marcinyshyn <derek@marcinyshyn.com>
+@since      October 21, 2012
+*/
+ul.mmm-webcams { list-style: none !important; }
+ul.mmm-webcams li { margin: 0 25px 0 0 !important; float: left; width: 140px; }
+ul.mmm-webcams li img { border-radius: 4px!important; box-shadow: 0 0 6px rgba(0, 0, 0, 0.5); }
+ul.mmm-webcams li h5 { font-size: 14px; line-height: 16px; margin: 0 !important; }
+ul.mmm-webcams li p { font-size: 12px; line-height: 14px; margin: 0 !important; }

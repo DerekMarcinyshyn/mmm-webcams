@@ -60,7 +60,7 @@ class Monashee_Webcam_Shortcode {
 
                 $img = get_post_meta( get_the_ID(), '_mmm_webcam_url_text', true );
 
-                $html .= '<img src="' . $img . '" alt="' . the_title( '', '', false ) . '" />';
+                $html .= '<a class="fancybox" rel="webcams" href="' . $img . '" title="' . the_title( '', '', false ) . '"><img src="' . $img . '" alt="' . the_title( '', '', false ) . '" width="140" /></a>';
 
                 $html .= the_title(
                     '<h5>',
@@ -68,7 +68,7 @@ class Monashee_Webcam_Shortcode {
                     false
                     );
 
-                $html .= get_post_meta( get_the_ID(), '_mmm_webcam_description_text', true );
+                $html .= '<p>' . get_post_meta( get_the_ID(), '_mmm_webcam_description_text', true ) . '</p>';
 
                 $html .= '</li>';
             }
