@@ -54,6 +54,8 @@ class Monashee_Webcam_Shortcode {
             $html = '<ul class="mmm-webcams">';
 
             while ( $loop->have_posts() ) {
+                $html .= '<li>';
+
                 $loop->the_post();
 
                 $img = get_post_meta( get_the_ID(), '_mmm_webcam_url_text', true );
@@ -61,12 +63,14 @@ class Monashee_Webcam_Shortcode {
                 $html .= '<img src="' . $img . '" alt="' . the_title( '', '', false ) . '" />';
 
                 $html .= the_title(
-                    '<li>',
-                    '</li>',
+                    '<h5>',
+                    '</h5>',
                     false
                     );
 
                 $html .= get_post_meta( get_the_ID(), '_mmm_webcam_description_text', true );
+
+                $html .= '</li>';
             }
 
             $html .= '</ul>';
