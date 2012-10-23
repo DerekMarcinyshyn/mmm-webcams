@@ -34,7 +34,7 @@ class Monashee_Webcam_Shortcode {
     private function __construct() { }
 
     /**
-     * Display the webcams where the shortcode lives
+     * Display the webcams within their respective categories
      * @param $atts
      * @param null $content
      * @return string
