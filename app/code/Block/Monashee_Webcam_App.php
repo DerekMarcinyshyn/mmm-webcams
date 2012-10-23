@@ -73,6 +73,10 @@ class Monashee_Webcam_App {
         wp_register_script( 'mmm-webcam-fancybox-jscript', MMM_WC_URL . '/lib/fancybox/jquery.fancybox.pack.js', array( 'jquery' ), MMM_WC_VERSION, true );
         wp_enqueue_script( 'mmm-webcam-fancybox-jscript');
 
+        // load jquery mousewheel
+        wp_register_script( 'jquery-mousewheel', MMM_WC_URL . '/lib/jquery/jquery.mousewheel-3.0.6.pack.js', array( 'jquery' ), '3.0.6', true );
+        wp_enqueue_script( 'jquery-mousewheel');
+
         // load mmm-webcams javascript
         wp_register_script( 'mmm-webcam-jscript', MMM_WC_URL . '/assets/js/mmm-webcam.js', array( 'jquery' ), MMM_WC_VERSION, true );
         wp_enqueue_script( 'mmm-webcam-jscript');
