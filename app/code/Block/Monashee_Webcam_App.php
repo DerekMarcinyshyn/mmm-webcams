@@ -38,9 +38,6 @@ class Monashee_Webcam_App {
         // add the custom post type
         add_action( 'init', array( &$mmm_wc_cpt, 'register_cpt_webcam' ) );
 
-        // add the custom taxonomy
-        add_action( 'init', array( &$mmm_wc_cpt, 'register_taxonomy_groups' ) );
-
         // initialize metaboxes class
         add_action( 'init', array( &$mmm_wc_cpt, 'initialize_mmm_webcam_metaboxes' ), 9999, 0 );
 

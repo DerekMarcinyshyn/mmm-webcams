@@ -40,43 +40,67 @@ class Monashee_Webcam_Shortcode {
      * @return string
      */
     function display_webcams( $atts, $content = null ) {
-        $loop = new WP_Query(
-            array(
-                'post_type'         => 'webcam',
-                'orderby'           => 'title',
-                'order'             => 'ASC',
-                'posts_per_page'    => '-1',
-            )
-        );
+        $html = '';
 
-        if ( $loop->have_posts() ) {
+        $tax = 'category';
+        $tax_terms = get_terms( $tax, array(
+                                    'orderby'   => 'id',
+                                    'order'     => 'ASC',
+                                    'exclude'   => '1' // hide uncategorized category
+                                ) );
 
-            $html = '<ul class="mmm-webcams">';
+        //print_r($tax_terms);
 
-            while ( $loop->have_posts() ) {
-                $html .= '<li>';
+        if ( $tax_terms) :
+            // cycle through each category
+            foreach ( $tax_terms as $tax_term ) :
 
-                $loop->the_post();
+                $args = array(
+                        'post_type'             => 'webcam',
+                        'taxonomy'              => 'category',
+                        'post_status'           => 'publish',
+                        'orderby'               => 'title',
+                        'order'                 => 'ASC',
+                        'posts_per_page'        => '-1',
+                        'ignore_sticky_posts'   => 1
+                        );
 
-                $img = get_post_meta( get_the_ID(), '_mmm_webcam_url_text', true );
+                $loop = NULL;
 
-                $html .= '<a class="fancybox" rel="webcams" href="' . $img . '?' . time() . '" title="' . the_title( '', '', false ) . '"><img src="' . $img . '?' . time() . '" alt="' . the_title( '', '', false ) . '" width="140" /></a>';
+                $loop = new WP_Query( $args );
 
-                $html .= the_title(
-                    '<h5>',
-                    '</h5>',
-                    false
-                    );
+                //print_r($loop);
 
-                $html .= '<p>' . get_post_meta( get_the_ID(), '_mmm_webcam_description_text', true ) . '</p>';
+                if ( $loop->have_posts() ) {
+                    $html .= '<h3>' . $tax_term->name . '</h3>';
 
-                $html .= '</li>';
-            }
+                    $html .= '<ul class="mmm-webcams">';
 
-            $html .= '</ul>';
-        } else {
-            $html = '<p>Sorry no webcams created.</p>';
-        }
+                    while ( $loop->have_posts() ) {
+                        $html .= '<li>';
+
+                        $loop->the_post();
+
+                        $img = get_post_meta( get_the_ID(), '_mmm_webcam_url_text', true );
+
+                        $html .= '<a class="fancybox" rel="webcams" href="' . $img . '?' . time() . '" title="' . the_title( '', '', false ) . '"><img src="' . $img . '?' . time() . '" alt="' . the_title( '', '', false ) . '" width="150" /></a>';
+
+                        $html .= the_title(
+                            '<h5>',
+                            '</h5>',
+                            false
+                            );
+
+                        $html .= '<p>' . get_post_meta( get_the_ID(), '_mmm_webcam_description_text', true ) . '</p>';
+
+                        $html .= '</li>';
+                    } // end while
+
+                    $html .= '</ul>';
+                }
+
+            endforeach; // end foreach
+        endif; // end if $tax_terms
 
         return $html;
     }

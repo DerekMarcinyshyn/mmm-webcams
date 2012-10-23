@@ -98,62 +98,28 @@ if ( ! class_exists( 'Monashee_Webcam_CPT' ) ) :
 
             $args = array(
                 'labels'                => $labels,
-                'hierarchical'          => false,
+                'hierarchical'          => true,
                 'description'           => 'Add your favorite webcam url and title.',
                 'supports'              => array('title'),
-
-                'public'                => true,
+                'taxonomies'            => array('category'),
+                'public'                => false,
                 'show_ui'               => true,
                 'show_in_menu'          => true,
                 'menu_position'         => 20,
 
                 'show_in_nav_menus'     => true,
-                'publicly_queryable'    => true,
+                'publicly_queryable'    => false,
                 'exclude_from_search'   => false,
                 'has_archive'           => true,
                 'query_var'             => true,
                 'can_export'            => true,
-                'rewrite'               => true,
+                'rewrite'               => false,
                 'capability_type'       => 'post'
             );
 
             register_post_type( 'webcam', $args );
         }
 
-        function register_taxonomy_groups() {
-
-            $labels = array(
-                'name'                          => _x( 'Webcam Groups', 'groups' ),
-                'singular_name'                 => _x( 'Webcam Group', 'groups' ),
-                'search_items'                  => _x( 'Search Webcam Groups', 'groups' ),
-                'popular_items'                 => _x( 'Popular Webcam Groups', 'groups' ),
-                'all_items'                     => _x( 'All Webcam Groups', 'groups' ),
-                'parent_item'                   => _x( 'Parent Group', 'groups' ),
-                'parent_item_colon'             => _x( 'Parent Group:', 'groups' ),
-                'edit_item'                     => _x( 'Edit Webcam Group', 'groups' ),
-                'update_item'                   => _x( 'Update Webcam Group', 'groups' ),
-                'add_new_item'                  => _x( 'Add New Webcam Group', 'groups' ),
-                'new_item_name'                 => _x( 'New Webcam Group', 'groups' ),
-                'separate_items_with_commas'    => _x( 'Separate groups with commas', 'groups' ),
-                'add_or_remove_items'           => _x( 'Add or remove groups', 'groups' ),
-                'choose_from_most_used'         => _x( 'Choose from the most used groups', 'groups' ),
-                'menu_name'                     => _x( 'Webcam Groups', 'groups' ),
-            );
-
-            $args = array(
-                'labels'            => $labels,
-                'public'            => true,
-                'show_in_nav_menus' => false,
-                'show_ui'           => true,
-                'show_tagcloud'     => false,
-                'hierarchical'      => true,
-
-                'rewrite'           => true,
-                'query_var'         => true
-            );
-
-            register_taxonomy( 'groups', array('webcam'), $args );
-        }
 
     }
 endif; // end if class_exists
