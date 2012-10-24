@@ -16,13 +16,14 @@ Monashee Mountain Multimedia Webcams is a plugin for WordPress that displays web
 ## Features
 
 * Displays webcam images on your page using `[mmm-webcams]` shortcode.
+* Clicking on webcam image brings up a Fancybox lightbox.
+* While in Fancybox you can use mousewheel to scroll through all webcams.
 
 ## To-do
 
-* Currently a work in progess...not working.
-* Fix known issues
 * Clean up code
 * Improve documentation
+* Look for possible bugs
 
 ## Changelog
 

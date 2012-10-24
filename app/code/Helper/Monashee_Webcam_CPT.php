@@ -98,16 +98,16 @@ if ( ! class_exists( 'Monashee_Webcam_CPT' ) ) :
 
             $args = array(
                 'labels'                => $labels,
-                'hierarchical'          => true,
+                'hierarchical'          => false,
                 'description'           => 'Add your favorite webcam url and title.',
                 'supports'              => array('title'),
-                'taxonomies'            => array('category'),
+                'taxonomies'            => array('cam_categories'),
                 'public'                => false,
                 'show_ui'               => true,
                 'show_in_menu'          => true,
                 'menu_position'         => 20,
 
-                'show_in_nav_menus'     => true,
+                'show_in_nav_menus'     => false,
                 'publicly_queryable'    => false,
                 'exclude_from_search'   => false,
                 'has_archive'           => true,
@@ -120,6 +120,40 @@ if ( ! class_exists( 'Monashee_Webcam_CPT' ) ) :
             register_post_type( 'webcam', $args );
         }
 
+        function register_taxonomy_cam_categories() {
+
+            $labels = array(
+                'name'                          => _x( 'Cam Categories', 'cam_categories' ),
+                'singular_name'                 => _x( 'Cam Category', 'cam_categories' ),
+                'search_items'                  => _x( 'Search Cam Categories', 'cam_categories' ),
+                'popular_items'                 => _x( 'Popular Cam Categories', 'cam_categories' ),
+                'all_items'                     => _x( 'All Cam Categories', 'cam_categories' ),
+                'parent_item'                   => _x( 'Parent Cam Category', 'cam_categories' ),
+                'parent_item_colon'             => _x( 'Parent Cam Category:', 'cam_categories' ),
+                'edit_item'                     => _x( 'Edit Cam Category', 'cam_categories' ),
+                'update_item'                   => _x( 'Update Cam Category', 'cam_categories' ),
+                'add_new_item'                  => _x( 'Add New Cam Category', 'cam_categories' ),
+                'new_item_name'                 => _x( 'New Cam Category', 'cam_categories' ),
+                'separate_items_with_commas'    => _x( 'Separate cam categories with commas', 'cam_categories' ),
+                'add_or_remove_items'           => _x( 'Add or remove Cam Categories', 'cam_categories' ),
+                'choose_from_most_used'         => _x( 'Choose from most used Cam Categories', 'cam_categories' ),
+                'menu_name'                     => _x( 'Cam Categories', 'cam_categories' ),
+            );
+
+            $args = array(
+                'labels'                => $labels,
+                'public'                => true,
+                'show_in_nav_menus'     => false,
+                'show_ui'               => true,
+                'show_tagcloud'         => true,
+                'hierarchical'          => true,
+
+                'rewrite'               => true,
+                'query_var'             => true
+            );
+
+            register_taxonomy( 'cam_categories', array('webcam'), $args );
+        }
 
     }
 endif; // end if class_exists
