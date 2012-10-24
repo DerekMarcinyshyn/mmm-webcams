@@ -105,8 +105,6 @@ class Monashee_Webcam_App {
                 'access_token'          => '',
             );
 
-            echo '******* ' . $config['slug'];
-
             new MMM_Webcams_Updater( $config );
         }
     }
