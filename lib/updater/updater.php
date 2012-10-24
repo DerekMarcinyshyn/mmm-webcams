@@ -4,7 +4,7 @@
 if ( !defined('ABSPATH') )
 	die('-1');
 
-if ( ! class_exists( 'WPGitHubUpdater' ) ) :
+if ( ! class_exists( 'MMM_Webcams_Updater' ) ) :
 
 /**
  * @version 1.4
@@ -31,7 +31,7 @@ if ( ! class_exists( 'WPGitHubUpdater' ) ) :
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
-class WPGitHubUpdater {
+class MMM_Webcams_Updater {
 
 	/**
 	 * Class Constructor
@@ -61,7 +61,7 @@ class WPGitHubUpdater {
 
 		$this->set_defaults();
 
-		if ( ( defined('WP_DEBUG') && WP_DEBUG ) || ( defined('WP_GITHUB_FORCE_UPDATE') || WP_GITHUB_FORCE_UPDATE ) )
+		if ( ( defined('WP_DEBUG') && WP_DEBUG ) || ( defined('MMM_WEBCAMS_FORCE_UPDATE') || MMM_WEBCAMS_FORCE_UPDATE ) )
 			add_action( 'init', array( $this, 'delete_transients' ), 11 );
 
 		add_filter( 'pre_set_site_transient_update_plugins', array( $this, 'api_check' ) );

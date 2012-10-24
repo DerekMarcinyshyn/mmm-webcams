@@ -88,12 +88,11 @@ class Monashee_Webcam_App {
      * @link    https://github.com/jkudish/WordPress-GitHub-Plugin-Updater
      */
     function github_plugin_updater() {
-        if ( !defined( 'WP_GITHUB_FORCE_UPDATE' ) )
-            define( 'WP_GITHUB_FORCE_UPDATE', true );
+        define( 'MMM_WEBCAMS_FORCE_UPDATE', true );
 
         if ( is_admin() ) {
             $config = array(
-                'slug'                  => plugin_basename(__FILE__),
+                'slug'                  => MMM_WC_DIRECTORY . '/mmm-webcams.php',
                 'proper_folder_name'    => 'mmm-webcams',
                 'api_url'               => 'https://api.github.com/repos/DerekMarcinyshyn/mmm-webcams',
                 'raw_url'               => 'https://raw.github.com/DerekMarcinyshyn/mmm-webcams/master',
@@ -106,7 +105,9 @@ class Monashee_Webcam_App {
                 'access_token'          => '',
             );
 
-            new WPGitHubUpdater($config);
+            echo '******* ' . $config['slug'];
+
+            new MMM_Webcams_Updater( $config );
         }
     }
 }
