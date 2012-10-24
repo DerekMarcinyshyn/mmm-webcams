@@ -46,7 +46,7 @@ class Monashee_Webcam_Shortcode {
                     'orderby'       => 'name',
                     'order'         => 'ASC',
                     'hide_empty'    => 1,
-                    'taxonomy'      => 'category',
+                    'taxonomy'      => 'cam_categories',
         );
 
         // cycle through each category
@@ -60,7 +60,7 @@ class Monashee_Webcam_Shortcode {
                     'post_status'           => 'publish',
                     'tax_query'             => array(
                                                     array(
-                                                        'taxonomy'  => 'category',
+                                                        'taxonomy'  => 'cam_categories',
                                                         'field'     => 'slug',
                                                         'terms'     => $tax->slug
                                                     )
