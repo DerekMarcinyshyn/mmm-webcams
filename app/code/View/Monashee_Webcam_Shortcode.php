@@ -68,14 +68,14 @@ class Monashee_Webcam_Shortcode {
                     );
 
             if ( get_posts($args) ) {
-                $html .= '<h3>' . $tax->name . '</h3>';
+                $html .= '<h3 class="webcams">' . $tax->name . '</h3>';
 
                 $html .= '<ul class="mmm-webcams">';
 
                 foreach ( get_posts($args) as $p ) {
                     $post_id = $p->ID;
 
-                    $html .= '<li>';
+                    $html .= '<li class="mmm-webcam">';
 
                     $img = get_post_meta( $post_id, '_mmm_webcam_url_text', true );
 
