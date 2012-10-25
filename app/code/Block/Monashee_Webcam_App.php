@@ -47,6 +47,9 @@ class Monashee_Webcam_App {
         // add the custom metabox fields to the custom post type webcam
         add_filter( 'cmb_meta_boxes', array( &$mmm_wc_cpt, 'mmm_webcam_metaboxes' ), 9 );
 
+        // add custom columns to webcam admin
+        add_filter( 'manage-edit-webcams', array( &$mmm_wc_cpt, 'add_webcam_columns' ) );
+
         // add shortcode action
         add_shortcode( 'mmm-webcams', array( &$mmm_wc_shortcode, 'display_webcams' ), 10, 1 );
 

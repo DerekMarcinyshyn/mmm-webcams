@@ -120,13 +120,15 @@ if ( ! class_exists( 'Monashee_Webcam_CPT' ) ) :
             register_post_type( 'webcam', $args );
         }
 
+        /**
+         * Add the custom taxonomy cam_categories
+         */
         function register_taxonomy_cam_categories() {
 
             $labels = array(
                 'name'                          => _x( 'Cam Categories', 'cam_categories' ),
                 'singular_name'                 => _x( 'Cam Category', 'cam_categories' ),
                 'search_items'                  => _x( 'Search Cam Categories', 'cam_categories' ),
-                'popular_items'                 => _x( 'Popular Cam Categories', 'cam_categories' ),
                 'all_items'                     => _x( 'All Cam Categories', 'cam_categories' ),
                 'parent_item'                   => _x( 'Parent Cam Category', 'cam_categories' ),
                 'parent_item_colon'             => _x( 'Parent Cam Category:', 'cam_categories' ),
@@ -145,7 +147,7 @@ if ( ! class_exists( 'Monashee_Webcam_CPT' ) ) :
                 'public'                => true,
                 'show_in_nav_menus'     => false,
                 'show_ui'               => true,
-                'show_tagcloud'         => true,
+                'show_tagcloud'         => false,
                 'hierarchical'          => true,
 
                 'rewrite'               => true,
@@ -153,6 +155,11 @@ if ( ! class_exists( 'Monashee_Webcam_CPT' ) ) :
             );
 
             register_taxonomy( 'cam_categories', array('webcam'), $args );
+        }
+
+        function add_webcam_columns( $webcam_columns ) {
+            $new_columns['id'] = __('ID');
+            $new_columns['title'] = _x('Webcam Name', 'column name');
         }
 
     }
