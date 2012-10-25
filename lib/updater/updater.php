@@ -90,7 +90,9 @@ class MMM_Webcams_Updater {
 			extract( parse_url( $this->config['zip_url'] ) ); // $scheme, $host, $path
 
 			$zip_url = $scheme . '://api.github.com/repos' . $path;
-			$zip_url = add_query_arg( array( 'access_token' => $this->config['access_token'] ), $zip_url );
+
+            // Do not add access_token for public plugin
+            //$zip_url = add_query_arg( array( 'access_token' => $this->config['access_token'] ), $zip_url );
 
 			$this->config['zip_url'] = $zip_url;
 		}
@@ -211,7 +213,9 @@ class MMM_Webcams_Updater {
 
 		if ( ! isset( $github_data ) || ! $github_data || '' == $github_data ) {
 			$query = $this->config['api_url'];
-			$query = add_query_arg( array('access_token' => $this->config['access_token']), $query );
+
+			// Do not add access_token for public plugin
+			//$query = add_query_arg( array('access_token' => $this->config['access_token']), $query );
 
 			$github_data = wp_remote_get( $query, array('sslverify' => $this->config['sslverify']) );
 

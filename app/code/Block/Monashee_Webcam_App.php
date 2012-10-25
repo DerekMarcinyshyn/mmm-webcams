@@ -92,13 +92,13 @@ class Monashee_Webcam_App {
 
         if ( is_admin() ) {
             $config = array(
-                'slug'                  => MMM_WC_DIRECTORY . '/mmm-webcams.php',
+                'slug'                  => 'mmm-webcams.php',
                 'proper_folder_name'    => 'mmm-webcams',
                 'api_url'               => 'https://api.github.com/repos/DerekMarcinyshyn/mmm-webcams',
                 'raw_url'               => 'https://raw.github.com/DerekMarcinyshyn/mmm-webcams/master',
                 'github_url'            => 'https://github.com/DerekMarcinyshyn/mmm-webcams',
                 'zip_url'               => 'https://github.com/DerekMarcinyshyn/mmm-webcams/zipball/master',
-                'sslverify'             => true,
+                'sslverify'             => false,
                 'requires'              => '3.0',
                 'tested'                => '3.5',
                 'readme'                => 'README.md',
