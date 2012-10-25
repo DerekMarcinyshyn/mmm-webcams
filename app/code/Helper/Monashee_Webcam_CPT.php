@@ -157,9 +157,64 @@ if ( ! class_exists( 'Monashee_Webcam_CPT' ) ) :
             register_taxonomy( 'cam_categories', array('webcam'), $args );
         }
 
+        /**
+         * Add custom columns to the Webcam edit page
+         * @param $webcam_columns
+         * @return array
+         */
         function add_webcam_columns( $webcam_columns ) {
-            $new_columns['id'] = __('ID');
-            $new_columns['title'] = _x('Webcam Name', 'column name');
+            $webcam_columns = array(
+                                'cb'                => '<input type="checkbox" />',
+                                'title'             => __( 'Webcam Name' ),
+                                'cam_categories'     => __( 'Webcam Category' ),
+                                'date'              => __( 'Date' )
+                                );
+
+            return $webcam_columns;
+        }
+
+        /**
+         * Populate the custom columns
+         * @param $column
+         * @param $post_id
+         */
+        function manage_webcam_custom_columns( $column, $post_id ) {
+            global $post;
+
+            switch( $column ) {
+
+                case 'cam_categories' :
+                    /* Get the cam categories */
+                    $terms = get_the_terms( $post_id, 'cam_categories' );
+
+                    /* Check if found */
+                    if ( !empty( $terms ) ) {
+
+                        $output = array();
+
+                        /* Loop through each term, linking to the 'edit posts' page for the specific term. */
+                        foreach( $terms as $term ) {
+
+                            $output[] = sprintf( '<a href="%s">%s</a>',
+                                esc_url( add_query_arg( array( 'post_type' => $post->post_type, 'cam_categories' => $term->slug ), 'edit.php' ) ),
+                                esc_html( sanitize_term_field( 'name', $term->name, $term->term_id, 'cam_categories', 'display' ) )
+                                    );
+                        }
+
+                        /* Join the terms, separating them with a comma */
+                        echo join( ', ', $output );
+
+                    } else {
+                        /* If no terms were found, output a default message. */
+                        _e( 'No Webcam Categories');
+                    }
+
+                    break;
+
+                /* Default break for everything else */
+                default:
+                    break;
+            }
         }
 
     }
