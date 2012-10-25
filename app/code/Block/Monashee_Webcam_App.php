@@ -92,7 +92,7 @@ class Monashee_Webcam_App {
 
         if ( is_admin() ) {
             $config = array(
-                'slug'                  => 'mmm-webcams.php',
+                'slug'                  => MMM_WC_DIRECTORY . '/mmm-webcams.php',
                 'proper_folder_name'    => 'mmm-webcams',
                 'api_url'               => 'https://api.github.com/repos/DerekMarcinyshyn/mmm-webcams',
                 'raw_url'               => 'https://raw.github.com/DerekMarcinyshyn/mmm-webcams/master',
