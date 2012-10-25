@@ -56,8 +56,8 @@ class Monashee_Webcam_App {
         // add shortcode action
         add_shortcode( 'mmm-webcams', array( &$mmm_wc_shortcode, 'display_webcams' ), 10, 1 );
 
-        // add css
-        add_action( 'init', array( &$this, 'mmm_webcam_css' ) );
+        // add css and js
+        add_action( 'init', array( &$this, 'mmm_webcam_css_js' ) );
 
         // add updater action
         add_action( 'init', array( &$this, 'github_plugin_updater' ), 10, 0 );
@@ -66,7 +66,7 @@ class Monashee_Webcam_App {
     /**
      * Load the CSS
      */
-    function mmm_webcam_css() {
+    function mmm_webcam_css_js() {
         // load mmm-webcams css
         wp_register_style( 'mmm-webcam-css', MMM_WC_URL . '/assets/css/style.css', true, MMM_WC_VERSION );
         wp_enqueue_style( 'mmm-webcam-css' );
@@ -86,6 +86,10 @@ class Monashee_Webcam_App {
         // load mmm-webcams javascript
         wp_register_script( 'mmm-webcam-jscript', MMM_WC_URL . '/assets/js/mmm-webcam.js', array( 'jquery' ), MMM_WC_VERSION, true );
         wp_enqueue_script( 'mmm-webcam-jscript');
+
+        // load greensock animation library
+        wp_register_script( 'mmm-greensock', MMM_WC_URL . '/lib/greensock/TweenMax.min.js', array( 'jquery' ), '1.542', true );
+        wp_enqueue_script( 'mmm-greensock');
     }
 
     /**
