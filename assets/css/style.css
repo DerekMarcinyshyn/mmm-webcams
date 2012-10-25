@@ -4,7 +4,7 @@ MMM Webcams
 @since      October 21, 2012
 */
 ul.mmm-webcams { list-style: none !important; margin:0; padding:0; }
-ul.mmm-webcams li { margin: 0 40px 0 0 !important; float: left; width: 150px; height: 200px; }
+ul.mmm-webcams li { margin: 0 40px 0 0; float: left; width: 150px; height: 200px; }
 ul.mmm-webcams li img { border-radius: 4px!important; box-shadow: 0 0 6px rgba(0, 0, 0, 0.5); margin-bottom: 6px; }
 ul.mmm-webcams li h5 { font-size: 14px; line-height: 16px; margin: 0 !important; }
 ul.mmm-webcams li p { font-size: 12px; line-height: 14px; margin: 0 !important; }
