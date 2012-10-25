@@ -59,6 +59,9 @@ class Monashee_Webcam_App {
         // add css and js
         add_action( 'init', array( &$this, 'mmm_webcam_css_js' ) );
 
+        // add admin help page
+        add_action( 'admin_menu', array( &$this, 'mmm_webcam_admin_menu' ) );
+
         // add updater action
         add_action( 'init', array( &$this, 'github_plugin_updater' ), 10, 0 );
     }
@@ -90,6 +93,22 @@ class Monashee_Webcam_App {
         // load greensock animation library
         wp_register_script( 'mmm-greensock', MMM_WC_URL . '/lib/greensock/TweenMax.min.js', array( 'jquery' ), '1.542', true );
         wp_enqueue_script( 'mmm-greensock');
+    }
+
+    function mmm_webcam_admin_menu() {
+        add_submenu_page( 'edit.php?post_type=webcam', 'Help', 'Help', 'manage_options', 'mmm-webcam-help', array( $this, 'webcam_admin_help' ) );
+    }
+
+    function webcam_admin_help() {
+        if ( !current_user_can( 'manage_options' ) ) {
+            wp_die( __('You do not have sufficient permissions to access this page.' ) );
+        }
+
+        echo '<div class="wrap">';
+        echo '<h2>MMM Webcams</h2>';
+        echo '<p>To display your webcams on a page use <code>[mmm-webcams]</code> where ever you would like the cams.</p>';
+        echo '<p>More documentation coming soon.</p>';
+        echo '</div>';
     }
 
     /**
