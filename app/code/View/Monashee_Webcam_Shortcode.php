@@ -89,6 +89,7 @@ class Monashee_Webcam_Shortcode {
                 } // end while
 
                 $html .= '</ul>';
+                $html .= '<div style="clear:both;"></div>';
             }
 
         endforeach; // end foreach

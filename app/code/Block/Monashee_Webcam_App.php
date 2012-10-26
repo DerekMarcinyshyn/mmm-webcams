@@ -35,6 +35,10 @@ class Monashee_Webcam_App {
         global $mmm_wc_shortcode,
                $mmm_wc_cpt;
 
+        // Setup hooks
+        register_activation_hook( MMM_WC_PLUGIN, array( &$this, 'mmm_webcam_add_defaults' ) );
+        register_uninstall_hook(  MMM_WC_PLUGIN, 'mmm_webcam_delete_plugin_options' );
+
         // add the custom post type
         add_action( 'init', array( &$mmm_wc_cpt, 'register_cpt_webcam' ) );
 
@@ -59,11 +63,44 @@ class Monashee_Webcam_App {
         // add css and js
         add_action( 'init', array( &$this, 'mmm_webcam_css_js' ) );
 
-        // add admin help page
+        // add admin stuff
+        add_action( 'admin_init',array( &$this, 'mmm_webcam_init' ) );
         add_action( 'admin_menu', array( &$this, 'mmm_webcam_admin_menu' ) );
 
         // add updater action
         add_action( 'init', array( &$this, 'github_plugin_updater' ), 10, 0 );
+    }
+
+    /**
+     * Init plugin options to white list our options
+     */
+    function mmm_webcam_init() {
+        register_setting( 'mmm_webcams_plugin_options', 'mmm_webcams_options', 'mmm_webcams_validate_options' );
+    }
+
+    /**
+     * Add options default
+     */
+    function mmm_webcam_add_defaults() {
+        $tmp = get_option( 'mmm_webcams_options' );
+
+        // check if
+        if( ( $tmp['chk_default_options_db'] == '1' ) || ( !is_array( $tmp ) ) ) {
+            delete_option( 'mmm_webcams_options' );
+            $arr = array(   'chk_animation'     => "1",
+                            'chk_developer'     => "1"
+
+            );
+        }
+
+        update_option( 'mmm_webcams_options', $arr );
+    }
+
+    /**
+     * Delete option table entries ONLY when plugin deactivated and deleted
+     */
+    function mmm_webcam_delete_plugin_options() {
+        delete_option( 'mmm_webcams_options' );
     }
 
     /**
@@ -96,19 +133,38 @@ class Monashee_Webcam_App {
     }
 
     function mmm_webcam_admin_menu() {
-        add_submenu_page( 'edit.php?post_type=webcam', 'Help', 'Help', 'manage_options', 'mmm-webcam-help', array( $this, 'webcam_admin_help' ) );
+        add_submenu_page( 'edit.php?post_type=webcam', 'Settings', 'Settings', 'manage_options', 'mmm-webcam-settings', array( $this, 'webcam_admin_settings' ) );
     }
 
-    function webcam_admin_help() {
+    function webcam_admin_settings() {
         if ( !current_user_can( 'manage_options' ) ) {
             wp_die( __('You do not have sufficient permissions to access this page.' ) );
         }
+        ?>
+        <div class="wrap">
+            <div class="icon32" id="icon-options-general"><br></div>
+            <h2>MMM Webcams</h2>
+            <p>To display your webcams on a page use <code>[mmm-webcams]</code> where ever you would like the cams.</p>
+            <h2>Settings</h2>
 
-        echo '<div class="wrap">';
-        echo '<h2>MMM Webcams</h2>';
-        echo '<p>To display your webcams on a page use <code>[mmm-webcams]</code> where ever you would like the cams.</p>';
-        echo '<p>More documentation coming soon.</p>';
-        echo '</div>';
+            <form action="options.php" method="post">
+                <?php settings_fields( 'mmm_webcams_plugin_options' ); ?>
+                <?php $options = get_option( 'mmm_webcams_options' ); ?>
+
+                <table class="form-table">
+                    <tr valign="top">
+                        <th scope="row">Webcam Fly-in Animation</th>
+                        <td><label><input name="mmm_webcams_options[chk_animation]" type="checkbox" value="1" <?php if ( isset ( $options['chk_animation'] ) ) { checked( '1', $options['chk_animation'] ); } ?> /> Check if you want to show animated fly in.</label></td>
+                    </tr>
+
+
+                </table>
+                <p class="submit"><input name="Update" type="submit" value="<?php esc_attr_e('Save Changes'); ?>" class="button button-primary" /></p>
+            </form>
+
+
+        </div>
+        <?php
     }
 
     /**

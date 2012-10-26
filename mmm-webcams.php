@@ -34,6 +34,9 @@ defined( 'ABSPATH' ) or die( "Cannot access pages directly." );
 // Plugin version
 define( 'MMM_WC_VERSION', '1.1');
 
+// Plugin
+define( 'MMM_WC_PLUGIN', __FILE__ );
+
 // Plugin directory
 define( 'MMM_WC_DIRECTORY', dirname( plugin_basename(__FILE__) ) );
 
@@ -61,7 +64,6 @@ require_once( MMM_WC_APP_PATH . '/code/Helper/Monashee_Webcam_CPT.php' );
 
 // Require updater class
 include_once( MMM_WC_LIB_PATH . '/updater/updater.php' );
-
 
 // ====================================
 // = Initialize and setup application =
