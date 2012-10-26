@@ -36,7 +36,7 @@ class Monashee_Webcam_App {
                $mmm_wc_cpt;
 
         // Setup hooks
-        register_activation_hook( MMM_WC_PLUGIN, array( &$this, 'mmm_webcam_add_defaults' ) );
+        register_activation_hook( MMM_WC_PLUGIN, array( $this, 'mmm_webcam_add_defaults' ) );
         register_uninstall_hook(  MMM_WC_PLUGIN, 'mmm_webcam_delete_plugin_options' );
 
         // add the custom post type
@@ -75,7 +75,7 @@ class Monashee_Webcam_App {
      * Init plugin options to white list our options
      */
     function mmm_webcam_init() {
-        register_setting( 'mmm_webcams_plugin_options', 'mmm_webcams_options', 'mmm_webcams_validate_options' );
+        register_setting( 'mmm_webcams_plugin_options', 'mmm_webcams_options' );
     }
 
     /**
@@ -86,7 +86,7 @@ class Monashee_Webcam_App {
 
         // check if
         if( ( $tmp['chk_default_options_db'] == '1' ) || ( !is_array( $tmp ) ) ) {
-            delete_option( 'mmm_webcams_options' );
+            delete_option( 'mmm_webcams_options' ); // quick delete then add the defaults
             $arr = array(   'chk_animation'     => "1",
                             'chk_developer'     => "1"
 
@@ -144,7 +144,7 @@ class Monashee_Webcam_App {
         <div class="wrap">
             <div class="icon32" id="icon-options-general"><br></div>
             <h2>MMM Webcams</h2>
-            <p>To display your webcams on a page use <code>[mmm-webcams]</code> where ever you would like the cams.</p>
+            <p>To display your webcams on a page use shortcode <code>[mmm-webcams]</code> where ever you would like the cams to appear.</p>
             <h2>Settings</h2>
 
             <form action="options.php" method="post">
@@ -157,9 +157,22 @@ class Monashee_Webcam_App {
                         <td><label><input name="mmm_webcams_options[chk_animation]" type="checkbox" value="1" <?php if ( isset ( $options['chk_animation'] ) ) { checked( '1', $options['chk_animation'] ); } ?> /> Check if you want to show animated fly in.</label></td>
                     </tr>
 
+                    <tr valign="top">
+                        <th scope="row">Developer Love</th>
+                        <td><label><input name="mmm_webcams_options[chk_developer]" type="checkbox" value="1" <?php if ( isset ( $options['chk_developer'] ) ) { checked( '1', $options['chk_developer'] ); } ?> /> Check if you want to show link to developer.</label></td>
+                    </tr>
+
+                    <tr><td colspan="2"><div style="margin-top:30px;"></div></td></tr>
+                    <tr valign="top" style="border-top:#dddddd 1px solid;">
+                        <th scope="row">Database Options</th>
+                        <td>
+                            <label><input name="mmm_webcams_options[chk_default_options_db]" type="checkbox" value="1" <?php if (isset($options['chk_default_options_db'])) { checked('1', $options['chk_default_options_db']); } ?> /> Restore defaults upon plugin deactivation/reactivation</label>
+                            <br /><span style="color:#666666;margin-left:2px;">Only check this if you want to reset plugin settings upon Plugin reactivation</span>
+                        </td>
+                    </tr>
 
                 </table>
-                <p class="submit"><input name="Update" type="submit" value="<?php esc_attr_e('Save Changes'); ?>" class="button button-primary" /></p>
+                <p class="submit"><input type="submit" value="<?php esc_attr_e('Save Changes'); ?>" class="button button-primary" /></p>
             </form>
 
 
