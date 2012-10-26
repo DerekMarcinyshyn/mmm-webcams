@@ -98,6 +98,10 @@ class Monashee_Webcam_App {
         // load greensock animation library
         wp_register_script( 'mmm-greensock', MMM_WC_URL . '/lib/greensock/TweenMax.min.js', array( 'jquery' ), '1.542', true );
         wp_enqueue_script( 'mmm-greensock');
+
+        // load greensock timeline Lite animation library
+        wp_register_script( 'mmm-greensock-timelinelite', MMM_WC_URL . '/lib/greensock/TimelineLite.min.js', array( 'jquery' ), '1.486', true );
+        wp_enqueue_script( 'mmm-greensock-timelinelite');
     }
 
     function mmm_webcam_admin_menu() {

@@ -105,10 +105,10 @@ class Monashee_Webcam_Shortcode {
         if ( isset( $options['chk_animation'] ) )
             $html .= '<script type="text/javascript">
 jQuery(document).ready( function () {
-    TweenMax.to( jQuery("h3.webcams"), 0, {css: { alpha: 0, marginLeft:600 } } );
-    TweenMax.to( jQuery("h3.webcams"), 0.7, {css: { alpha: 1, marginLeft:0 }, ease: Bounce.easeOut, delay:0.3 } );
-    TweenMax.to( jQuery(".mmm-webcam"), 0, {css: { marginTop:"-600px", rotation:181, alpha:0 } } );
-    TweenMax.to( jQuery(".mmm-webcam"), 0.4, {css: { marginTop:"0", rotation:0, alpha:1 }, delay: 0.7, ease: Sine.easeOut } );
+    TweenMax.to( jQuery("h3.webcams"), 0, {css: { opacity: 0, marginLeft:600 } } );
+    TweenMax.to( jQuery("h3.webcams"), 0.7, {css: { opacity: 1, marginLeft:0 }, ease: Bounce.easeOut, delay:0.3 } );
+    var tl = new TimelineLite();
+    tl.staggerFrom( jQuery(".mmm-webcam"), 0.6, {css: { marginTop:"-=300px", opacity: 0 } }, 0.2 );
 });
 </script>';
 
