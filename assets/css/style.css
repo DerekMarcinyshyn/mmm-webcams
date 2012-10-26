@@ -8,3 +8,5 @@ ul.mmm-webcams li { margin: 0 40px 0 0; float: left; width: 150px; height: 200px
 ul.mmm-webcams li img { border-radius: 4px!important; box-shadow: 0 0 6px rgba(0, 0, 0, 0.5); margin-bottom: 6px; }
 ul.mmm-webcams li h5 { font-size: 14px; line-height: 16px; margin: 0 !important; }
 ul.mmm-webcams li p { font-size: 12px; line-height: 14px; margin: 0 !important; }
+p.mmm-developer { font-size: 11px; color: #ccc; }
+p.mmm-developer a { text-decoration: none; color: #ccc; }

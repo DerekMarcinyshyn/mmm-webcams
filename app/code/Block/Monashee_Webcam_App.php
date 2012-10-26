@@ -72,38 +72,6 @@ class Monashee_Webcam_App {
     }
 
     /**
-     * Init plugin options to white list our options
-     */
-    function mmm_webcam_init() {
-        register_setting( 'mmm_webcams_plugin_options', 'mmm_webcams_options' );
-    }
-
-    /**
-     * Add options default
-     */
-    function mmm_webcam_add_defaults() {
-        $tmp = get_option( 'mmm_webcams_options' );
-
-        // check if
-        if( ( $tmp['chk_default_options_db'] == '1' ) || ( !is_array( $tmp ) ) ) {
-            delete_option( 'mmm_webcams_options' ); // quick delete then add the defaults
-            $arr = array(   'chk_animation'     => "1",
-                            'chk_developer'     => "1"
-
-            );
-        }
-
-        update_option( 'mmm_webcams_options', $arr );
-    }
-
-    /**
-     * Delete option table entries ONLY when plugin deactivated and deleted
-     */
-    function mmm_webcam_delete_plugin_options() {
-        delete_option( 'mmm_webcams_options' );
-    }
-
-    /**
      * Load the CSS
      */
     function mmm_webcam_css_js() {
@@ -178,6 +146,38 @@ class Monashee_Webcam_App {
 
         </div>
         <?php
+    }
+
+    /**
+     * Add options default
+     */
+    function mmm_webcam_add_defaults() {
+        $tmp = get_option( 'mmm_webcams_options' );
+
+        // check if
+        if( ( $tmp['chk_default_options_db'] == '1' ) || ( !is_array( $tmp ) ) ) {
+            delete_option( 'mmm_webcams_options' ); // quick delete then add the defaults
+            $arr = array(   'chk_animation'     => "1",
+                            'chk_developer'     => "1"
+
+            );
+        }
+
+        update_option( 'mmm_webcams_options', $arr );
+    }
+
+    /**
+     * Delete option table entries ONLY when plugin deactivated and deleted
+     */
+    function mmm_webcam_delete_plugin_options() {
+        delete_option( 'mmm_webcams_options' );
+    }
+
+    /**
+     * Init plugin options to white list our options
+     */
+    function mmm_webcam_init() {
+        register_setting( 'mmm_webcams_plugin_options', 'mmm_webcams_options' );
     }
 
     /**
