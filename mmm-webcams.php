@@ -9,7 +9,7 @@ Plugin Name: MMM Webcams
 Plugin URI: http://monasheemountainmultimedia.com/plugins/mmm-webcams/
 Description: Displays webcams on your page.
 Author: Derek Marcinyshyn
-Version: 1.2
+Version: 1.3
 Author URI: http://derek.marcinyshyn.com
 License: GPLv2
 
@@ -33,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 defined( 'ABSPATH' ) or die( "Cannot access pages directly." );
 
 // Plugin version
-define( 'MMM_WC_VERSION', '1.2');
+define( 'MMM_WC_VERSION', '1.3');
 
 // Plugin
 define( 'MMM_WC_PLUGIN', __FILE__ );
@@ -55,13 +55,13 @@ define( 'MMM_WC_URL', WP_PLUGIN_URL . '/' . MMM_WC_DIRECTORY );
 
 
 // Require main class
-require_once( MMM_WC_APP_PATH . '/code/Block/Monashee_Webcam_App.php' );
+include_once( MMM_WC_APP_PATH . '/code/Block/Monashee_Webcam_App.php' );
 
 // Require shortcode class
-require_once( MMM_WC_APP_PATH . '/code/View/Monashee_Webcam_Shortcode.php' );
+include_once( MMM_WC_APP_PATH . '/code/View/Monashee_Webcam_Shortcode.php' );
 
 // Require custom post type class
-require_once( MMM_WC_APP_PATH . '/code/Helper/Monashee_Webcam_CPT.php' );
+include_once( MMM_WC_APP_PATH . '/code/Helper/Monashee_Webcam_CPT.php' );
 
 // Require updater class
 include_once( MMM_WC_LIB_PATH . '/updater/updater.php' );

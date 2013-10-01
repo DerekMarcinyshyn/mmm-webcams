@@ -69,25 +69,17 @@ class Monashee_Webcam_Shortcode {
 
             if ( get_posts($args) ) {
                 $html .= '<h3 class="webcams">' . $tax->name . '</h3>';
-
                 $html .= '<ul class="mmm-webcams">';
 
                 foreach ( get_posts($args) as $p ) {
                     $post_id = $p->ID;
-
                     $html .= '<li class="mmm-webcam">';
-
                     $img = get_post_meta( $post_id, '_mmm_webcam_url_text', true );
-
                     $html .= '<a class="fancybox" rel="webcams" href="' . $img . '?' . time() . '" title="' . $p->post_title . '"><img src="' . $img . '?' . time() . '" alt="' . $p->post_title . '" width="150" /></a>';
-
                     $html .= '<h5>' . $p->post_title . '</h5>';
-
                     $html .= '<p>' . get_post_meta( $post_id, '_mmm_webcam_description_text', true ) . '</p>';
-
                     $html .= '</li>';
                 } // end while
-
                 $html .= '</ul>';
                 $html .= '<div style="clear:both;"></div>';
             }

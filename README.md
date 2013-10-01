@@ -4,9 +4,9 @@
 
 * Derek Marcinyshyn [monasheemountainmultimedia.com](http://monasheemountainmultimedia.com/)
 
-* **Version**: 1.2
+* **Version**: 1.3
 * **Requires at least**: 3.3
-* **Tested up to**: 3.5-beta
+* **Tested up to**: 3.7
 * **License**: GPLv2
 
 ## Description
@@ -27,7 +27,11 @@ Monashee Mountain Multimedia Webcams is a plugin for WordPress that displays web
 
 ## Changelog
 
-~Current Version:1.2~
+~Current Version:1.3~
+
+### 1.3
+
+* Update Fancybox library
 
 ### 1.0
 
