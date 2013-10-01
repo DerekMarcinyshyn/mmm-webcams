@@ -42,8 +42,9 @@ class Monashee_Webcam_Shortcode {
     public function display_webcams( $atts, $content = null ) {
 
         // add the css and js only when the shortcode is used not on every page load
-        add_action( 'init', array( $this, 'mmm_webcam_css_js' ) );
+        $this->mmm_webcam_css_js();
 
+        // set return var
         $html = '';
 
         $cat_args = array(
