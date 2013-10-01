@@ -7,7 +7,7 @@
 * **Version**: 1.3
 * **Requires at least**: 3.3
 * **Tested up to**: 3.7
-* **License**: GPLv2
+* **License**: MIT
 
 ## Description
 
