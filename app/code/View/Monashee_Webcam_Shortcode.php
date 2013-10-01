@@ -39,7 +39,11 @@ class Monashee_Webcam_Shortcode {
      * @param null $content
      * @return string
      */
-    function display_webcams( $atts, $content = null ) {
+    public function display_webcams( $atts, $content = null ) {
+
+        // add the css and js only when the shortcode is used not on every page load
+        add_action( 'init', array( $this, 'mmm_webcam_css_js' ) );
+
         $html = '';
 
         $cat_args = array(
@@ -105,6 +109,35 @@ jQuery(document).ready( function () {
 </script>';
 
         return $html;
+    }
+
+    /**
+     * Load the CSS
+     */
+    public function mmm_webcam_css_js() {
+        // load mmm-webcams css
+        wp_register_style( 'mmm-webcam-css', MMM_WC_URL . '/assets/css/style.css', true, MMM_WC_VERSION );
+        wp_enqueue_style( 'mmm-webcam-css' );
+
+        // load fancybox css
+        wp_register_style( 'mmm-webcam-fancybox-css', MMM_WC_URL . '/lib/fancybox/jquery.fancybox.css', true, MMM_WC_VERSION );
+        wp_enqueue_style( 'mmm-webcam-fancybox-css' );
+
+        // load fancybox jquery
+        wp_register_script( 'mmm-webcam-fancybox-jscript', MMM_WC_URL . '/lib/fancybox/jquery.fancybox.pack.js', array( 'jquery' ), MMM_WC_VERSION, true );
+        wp_enqueue_script( 'mmm-webcam-fancybox-jscript');
+
+        // load jquery mousewheel
+        wp_register_script( 'jquery-mousewheel', MMM_WC_URL . '/lib/jquery/jquery.mousewheel-3.0.6.pack.js', array( 'jquery' ), '3.0.6', true );
+        wp_enqueue_script( 'jquery-mousewheel');
+
+        // load mmm-webcams javascript
+        wp_register_script( 'mmm-webcam-jscript', MMM_WC_URL . '/assets/js/mmm-webcam.js', array( 'jquery' ), MMM_WC_VERSION, true );
+        wp_enqueue_script( 'mmm-webcam-jscript');
+
+        // load greensock TweenMax animation library over CDN
+        wp_register_script( 'mmm-greensock-timelinelite', 'http://cdnjs.cloudflare.com/ajax/libs/gsap/1.10.3/TweenMax.min.js', false, '1.10.3', true );
+        wp_enqueue_script( 'mmm-greensock-timelinelite');
     }
 
 }

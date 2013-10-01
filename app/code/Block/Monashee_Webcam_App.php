@@ -61,7 +61,7 @@ class Monashee_Webcam_App {
         add_shortcode( 'mmm-webcams', array( $mmm_wc_shortcode, 'display_webcams' ), 10, 1 );
 
         // add css and js
-        add_action( 'init', array( $this, 'mmm_webcam_css_js' ) );
+        //add_action( 'init', array( $this, 'mmm_webcam_css_js' ) );
 
         // add admin stuff
         add_action( 'admin_init',array( $this, 'mmm_webcam_init' ) );
@@ -72,42 +72,15 @@ class Monashee_Webcam_App {
     }
 
     /**
-     * Load the CSS
+     * Add the admin link in Settings
      */
-    public function mmm_webcam_css_js() {
-        // load mmm-webcams css
-        wp_register_style( 'mmm-webcam-css', MMM_WC_URL . '/assets/css/style.css', true, MMM_WC_VERSION );
-        wp_enqueue_style( 'mmm-webcam-css' );
-
-        // load fancybox css
-        wp_register_style( 'mmm-webcam-fancybox-css', MMM_WC_URL . '/lib/fancybox/jquery.fancybox.css', true, MMM_WC_VERSION );
-        wp_enqueue_style( 'mmm-webcam-fancybox-css' );
-
-        // load fancybox jquery
-        wp_register_script( 'mmm-webcam-fancybox-jscript', MMM_WC_URL . '/lib/fancybox/jquery.fancybox.pack.js', array( 'jquery' ), MMM_WC_VERSION, true );
-        wp_enqueue_script( 'mmm-webcam-fancybox-jscript');
-
-        // load jquery mousewheel
-        wp_register_script( 'jquery-mousewheel', MMM_WC_URL . '/lib/jquery/jquery.mousewheel-3.0.6.pack.js', array( 'jquery' ), '3.0.6', true );
-        wp_enqueue_script( 'jquery-mousewheel');
-
-        // load mmm-webcams javascript
-        wp_register_script( 'mmm-webcam-jscript', MMM_WC_URL . '/assets/js/mmm-webcam.js', array( 'jquery' ), MMM_WC_VERSION, true );
-        wp_enqueue_script( 'mmm-webcam-jscript');
-
-        // load greensock animation library
-        wp_register_script( 'mmm-greensock', MMM_WC_URL . '/lib/greensock/TweenMax.min.js', array( 'jquery' ), '1.542', true );
-        wp_enqueue_script( 'mmm-greensock');
-
-        // load greensock timeline Lite animation library
-        wp_register_script( 'mmm-greensock-timelinelite', MMM_WC_URL . '/lib/greensock/TimelineLite.min.js', array( 'jquery' ), '1.486', true );
-        wp_enqueue_script( 'mmm-greensock-timelinelite');
-    }
-
     public function mmm_webcam_admin_menu() {
         add_submenu_page( 'edit.php?post_type=webcam', 'Settings', 'Settings', 'manage_options', 'mmm-webcam-settings', array( $this, 'webcam_admin_settings' ) );
     }
 
+    /**
+     * Admin settings
+     */
     public function webcam_admin_settings() {
         if ( !current_user_can( 'manage_options' ) ) {
             wp_die( __('You do not have sufficient permissions to access this page.' ) );
@@ -146,8 +119,6 @@ class Monashee_Webcam_App {
         </table>
         <p class="submit"><input type="submit" value="<?php esc_attr_e('Save Changes'); ?>" class="button button-primary" /></p>
     </form>
-
-
 </div>
         <?php
     }
