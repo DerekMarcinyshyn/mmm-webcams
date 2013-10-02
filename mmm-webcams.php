@@ -6,7 +6,7 @@
  */
 /*
 Plugin Name: MMM Webcams
-Plugin URI: http://monasheemountainmultimedia.com/plugins/mmm-webcams/
+Plugin URI: https://github.com/DerekMarcinyshyn/mmm-webcams
 Description: Displays webcams on your page.
 Author: Derek Marcinyshyn
 Version: 1.3
@@ -34,7 +34,6 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-
 
 // Exit if called directly
 defined( 'ABSPATH' ) or die( "Cannot access pages directly." );
@@ -89,4 +88,3 @@ $mmm_wc_shortcode = Monashee_Webcam_Shortcode::get_instance();
 
 // Main class app initialization in Monashee_Weather::__construct()
 $mmm_wc_app = Monashee_Webcam_App::get_instance();
-

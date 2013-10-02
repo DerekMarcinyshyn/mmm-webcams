@@ -109,6 +109,13 @@ jQuery(document).ready( function () {
 });
 </script>';
 
+        // start fancybox
+        $html .= '<script type="text/javascript">';
+        $html .= 'jQuery(document).ready(function() {';
+        $html .= 'jQuery(".fancybox").fancybox();';
+        $html .= '});';
+        $html .= '</script>';
+
         return $html;
     }
 
