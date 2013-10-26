@@ -1,7 +1,7 @@
 <?php
 /**
  * @package MMM_Webcams
- * @version 1.2
+ * @version 1.4
  * @since   October 20, 2012
  */
 /*
@@ -9,7 +9,7 @@ Plugin Name: MMM Webcams
 Plugin URI: https://github.com/DerekMarcinyshyn/mmm-webcams
 Description: Displays webcams on your page.
 Author: Derek Marcinyshyn
-Version: 1.3
+Version: 1.4
 Author URI: http://derek.marcinyshyn.com
 License: MIT
 
