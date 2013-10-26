@@ -39,7 +39,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 defined( 'ABSPATH' ) or die( "Cannot access pages directly." );
 
 // Plugin version
-define( 'MMM_WC_VERSION', '1.3');
+define( 'MMM_WC_VERSION', '1.4');
 
 // Plugin
 define( 'MMM_WC_PLUGIN', __FILE__ );
